@@ -10,11 +10,12 @@ import (
 
 var build bool = true
 type Game struct{
-	images []*ebiten.Image
+	//go dict
+	Textures map[string]*ebiten.Image
 }
 func NewGame() *Game {
 	return &Game{
-        images: LoadImages(),
+        Textures: LoadImages(),
     }
 }
 func (g *Game) Update() error {
@@ -23,13 +24,8 @@ func (g *Game) Update() error {
 
 func (g *Game) Draw(screen *ebiten.Image) {
 	ebitenutil.DebugPrint(screen, "Hello, World!")
-	xpos := 0
-	for _, image := range g.images {
-		op := &ebiten.DrawImageOptions{}
-		op.GeoM.Translate(float64(xpos), 0)
-		screen.DrawImage(image, op)
-        xpos += image.Bounds().Size().X
-	}
+	//referencing items by image name
+	screen.DrawImage(g.Textures["stone.png"], nil)
 }
 
 func (g *Game) Layout(outsideWidth, outsideHeight int) (screenWidth, screenHeight int) {
