@@ -2,12 +2,16 @@ package main
 
 import (
 	"log"
-
+    "fmt"
 	"github.com/hajimehoshi/ebiten/v2"
 	"github.com/hajimehoshi/ebiten/v2/ebitenutil"
 )
 
+//fetching the paths of the games images from constants.go
+var imagePaths []string = fetchGameImagePaths()
 
+
+//currently building or running?
 var build bool = true
 type Game struct{
 	//go dict
@@ -15,7 +19,7 @@ type Game struct{
 }
 func NewGame() *Game {
 	return &Game{
-        Textures: LoadImages(),
+        Textures: LoadImages(imagePaths),
     }
 }
 func (g *Game) Update() error {
@@ -25,7 +29,7 @@ func (g *Game) Update() error {
 func (g *Game) Draw(screen *ebiten.Image) {
 	ebitenutil.DebugPrint(screen, "Hello, World!")
 	//referencing items by image name
-	screen.DrawImage(g.Textures["stone.png"], nil)
+	screen.DrawImage(g.Textures["assets/stone.png"], nil)
 }
 
 func (g *Game) Layout(outsideWidth, outsideHeight int) (screenWidth, screenHeight int) {
@@ -33,6 +37,7 @@ func (g *Game) Layout(outsideWidth, outsideHeight int) (screenWidth, screenHeigh
 }
 
 func main() {
+	fmt.Println("fetched image paths: ", imagePaths)
 	g := NewGame()
 	ebiten.SetWindowSize(640, 480)
 	ebiten.SetWindowTitle("Hello, World!")
