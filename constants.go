@@ -8,4 +8,6 @@ func fetchGameImagePaths() []string {
 }
 
 var GroundY int = 200
-var PlayerX int = 0
+var PlayerX int = 200
+var WindowWidth int = 720
+var WindowHeight int = 480

@@ -1,11 +1,14 @@
 package main
 
-import("fmt"
+import(
     "github.com/hajimehoshi/ebiten/v2"
 )
 
-func DetectJump(){
+func DetectJump(g *Game)*Game{
 	if ebiten.IsMouseButtonPressed(ebiten.MouseButton0) || ebiten.IsMouseButtonPressed(ebiten.MouseButton1) || ebiten.IsKeyPressed(ebiten.KeySpace){
-		fmt.Println("jump")
+		if g.PlayerY == float32(GroundY){
+			g.PlayerYVelocity = 10
+		}
 	}
+	return g
 }
