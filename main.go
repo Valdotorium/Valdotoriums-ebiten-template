@@ -16,13 +16,19 @@ var build bool = true
 type Game struct{
 	//go dict
 	Textures map[string]*ebiten.Image
+	PlayerY float32
+	PlayerX float32
 }
 func NewGame() *Game {
 	return &Game{
         Textures: LoadImages(imagePaths),
+		PlayerY: float32(GroundY),
+        PlayerX: float32(PlayerX),
     }
 }
 func (g *Game) Update() error {
+	//detecting jumping state
+	DetectJump()
 	return nil
 }
 
@@ -41,6 +47,7 @@ func main() {
 	g := NewGame()
 	ebiten.SetWindowSize(640, 480)
 	ebiten.SetWindowTitle("Hello, World!")
+	ebiten.SetWindowResizingMode(ebiten.WindowResizingModeOnlyFullscreenEnabled)
 	if err := ebiten.RunGame(g); err != nil {
 		log.Fatal(err)
 	}

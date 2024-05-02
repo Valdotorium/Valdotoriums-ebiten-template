@@ -6,3 +6,6 @@ func fetchGameImagePaths() []string {
 		"assets/packet.png"}
 	return imagePaths
 }
+
+var GroundY int = 200
+var PlayerX int = 0
