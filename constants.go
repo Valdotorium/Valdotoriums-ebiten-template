@@ -3,7 +3,8 @@ package main
 func fetchGameImagePaths() []string {
 	imagePaths := []string{
 		"assets/stone.png",
-		"assets/packet.png"}
+		"assets/packet.png",
+	    "assets/grass.png"}
 	return imagePaths
 }
 

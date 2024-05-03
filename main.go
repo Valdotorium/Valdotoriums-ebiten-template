@@ -13,6 +13,8 @@ import (
 var imagePaths []string = fetchGameImagePaths()
 
 //web build instructions:
+//env GOOS=js GOARCH=wasm go build -o main.wasm .
+//cp $(go env GOROOT)/misc/wasm/wasm_exec.js .
 
 //currently building or running?
 var build bool = true
@@ -53,6 +55,19 @@ func (g *Game) Draw(screen *ebiten.Image) {
 	op := &ebiten.DrawImageOptions{}
     op.GeoM.Translate(float64(g.PlayerX) - float64(g.ScrollX), float64(WindowHeight)-float64(g.PlayerY))
     screen.DrawImage(g.Textures["assets/stone.png"], op)
+
+	//drawing the ground
+	TileOffset := int(g.PlayerX) % 64
+	TileX := 0
+	for TileX < WindowWidth + TileOffset{
+        op := &ebiten.DrawImageOptions{}
+        op.GeoM.Translate(float64(TileX), float64(WindowHeight) - float64(GroundY))
+		//resize the image to 64 x 192 pixels
+		op.GeoM.Scale(float64(4), float64(4))
+        screen.DrawImage(g.Textures["assets/grass.png"], op)
+        TileX += 64
+	}
+
 
 	
 }
