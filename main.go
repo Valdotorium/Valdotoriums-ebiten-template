@@ -53,19 +53,21 @@ func (g *Game) Draw(screen *ebiten.Image) {
 	ebitenutil.DebugPrint(screen, "Score:")
 	//referencing items by image name
 	op := &ebiten.DrawImageOptions{}
-    op.GeoM.Translate(float64(g.PlayerX) - float64(g.ScrollX), float64(WindowHeight)-float64(g.PlayerY))
-    screen.DrawImage(g.Textures["assets/stone.png"], op)
+	stoneblock := g.Textures["assets/stone.png"]
+    op.GeoM.Translate(float64(g.PlayerX) - float64(g.ScrollX), float64(WindowHeight)-float64(g.PlayerY) - float64(stoneblock.Bounds().Size().Y))
+    screen.DrawImage(stoneblock, op)
 
 	//drawing the ground
 	TileOffset := int(g.PlayerX) % 64
 	TileX := 0
 	for TileX < WindowWidth + TileOffset{
         op := &ebiten.DrawImageOptions{}
-        op.GeoM.Translate(float64(TileX), float64(WindowHeight) - float64(GroundY))
 		//resize the image to 64 x 192 pixels
-		op.GeoM.Scale(float64(4), float64(4))
+		op.GeoM.Scale(4, 4)
+        op.GeoM.Translate(float64(TileX), float64(WindowHeight) - float64(GroundY))
         screen.DrawImage(g.Textures["assets/grass.png"], op)
         TileX += 64
+
 	}
 
 
