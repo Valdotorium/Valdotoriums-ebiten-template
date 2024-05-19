@@ -1,4 +1,4 @@
-module gobird
+module github.com/Valdotorium/gobird
 
 go 1.22.2
 

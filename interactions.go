@@ -2,6 +2,7 @@ package main
 
 import(
     "github.com/hajimehoshi/ebiten/v2"
+	"github.com/Valdotorium/gobird/pkg/touch"
 )
 
 func DetectJump(g *Game)*Game{
@@ -18,5 +19,12 @@ type Touch struct{
 	release bool
 }
 func GetTouches()*Touch{
+	touches := touch.GetTouchIDs()
+	for i := range touches{
+		touchpos := ebiten.TouchPosition(touches[i])
+		return &Touch{
+			x: touchpos[0]
+		}
 
+	}
 }
