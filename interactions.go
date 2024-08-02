@@ -21,10 +21,12 @@ type Touch struct{
 func GetTouches()*Touch{
 	touches := touch.GetTouchIDs()
 	for i := range touches{
-		touchpos := ebiten.TouchPosition(touches[i])
+		touchposx, touchposy := ebiten.TouchPosition(touches[i])
 		return &Touch{
-			x: touchpos[0]
-		}
-
+			x : touchposx,
+			y : touchposy,
+            release : touch.IsTouchJustReleased(touches[i])}
 	}
+	return nil
+
 }
