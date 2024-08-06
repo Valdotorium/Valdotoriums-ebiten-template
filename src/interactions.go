@@ -13,14 +13,6 @@ type Mouse struct {
 	isDown bool
 	position Vector2i
 }
-func DetectJump(g *Game)*Game{
-	if ebiten.IsMouseButtonPressed(ebiten.MouseButton0) || ebiten.IsMouseButtonPressed(ebiten.MouseButton1) || ebiten.IsKeyPressed(ebiten.KeySpace) {
-		if g.PlayerY == float32(GroundY){
-			g.PlayerYVelocity = 10
-		}
-	}
-	return g
-}
 
 func GetTouches()*Touch{
 	touches := touch.GetTouchIDs()

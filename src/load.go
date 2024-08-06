@@ -21,7 +21,7 @@ func LoadImages(imagePaths []string) map[string]*ebiten.Image {
 	assetPath := "assets"
 	//dict for easy texture access
 	Images := make(map[string]*ebiten.Image)
-	if build {
+	if true {
 		//get cwd of executable
 		assetPath = GetCWDPath() + "assets"
 		fmt.Println("asset path:" + assetPath)
@@ -32,7 +32,7 @@ func LoadImages(imagePaths []string) map[string]*ebiten.Image {
 
 		for image := range imagePaths {
 			var path string = imagePaths[image]
-			if build{
+			if true{
 				path = JoinCWDPath(imagePaths[image])
 			}
 			fmt.Println(path)
