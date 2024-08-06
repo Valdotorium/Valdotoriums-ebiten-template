@@ -15,14 +15,12 @@ type Game struct{
 	//go dict
 	Textures map[string]*ebiten.Image
 	IsDebuggingMode bool
-	Score int
 	Mouse Mouse
 }
 func NewGame() *Game {
 	return &Game{
         Textures: LoadImages(imagePaths),
 		IsDebuggingMode: true,
-		Score: 0,
 		Mouse: Mouse{},
     }
 }

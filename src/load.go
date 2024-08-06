@@ -10,6 +10,7 @@ import (
 )
 func fetchGameImagePaths() []string {
 	imagePaths := []string{
+		//put your games image paths here
 		"assets/stone.png",
 		"assets/packet.png",
 	    "assets/grass.png"}
