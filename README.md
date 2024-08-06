@@ -8,6 +8,7 @@ CODING
 BUILDING FOR WEB
 
 -> Run this command on Mac/Linux:
+
     env GOOS=js GOARCH=wasm go build -o yourgame.wasm github.com/yourname/yourgame
 
    Or on Windows PowerShell:
@@ -19,8 +20,9 @@ BUILDING FOR WEB
     Remove-Item Env:GOARCH
 
    (you do not need to copy wasm_exec.js since it is already contained in the docs directory, if it does not work on Windows run:
-   $goroot = go env GOROOT
-   cp $goroot\misc\wasm\wasm_exec.js .)
+   
+    $goroot = go env GOROOT
+    cp $goroot\misc\wasm\wasm_exec.js .)
 
    (Commands from https://ebitengine.org/en/documents/webassembly.html, accessed on 6th August 2024)
 
