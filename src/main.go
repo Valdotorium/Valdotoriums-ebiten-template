@@ -28,6 +28,7 @@ type Game struct{
 	PlayerYVelocity float32
 	IsDebuggingMode bool
 	Score int
+	Mouse Mouse
 }
 func NewGame() *Game {
 	return &Game{
@@ -39,11 +40,13 @@ func NewGame() *Game {
         PlayerYVelocity: float32(0),
 		IsDebuggingMode: true,
 		Score: 0,
+		Mouse: Mouse{},
     }
 }
 func (g *Game) Update() error {
 	//detecting jumping state
 	g = DetectJump(g)
+	g = UpdateMouse(g)
 	g = PlayerPhysics(g)
 	return nil
 }

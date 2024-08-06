@@ -8,6 +8,13 @@ import (
 	"github.com/hajimehoshi/ebiten/v2"
 	"github.com/hajimehoshi/ebiten/v2/ebitenutil"
 )
+func fetchGameImagePaths() []string {
+	imagePaths := []string{
+		"assets/stone.png",
+		"assets/packet.png",
+	    "assets/grass.png"}
+	return imagePaths
+}
 
 func LoadImages(imagePaths []string) map[string]*ebiten.Image {
 	//assets location
